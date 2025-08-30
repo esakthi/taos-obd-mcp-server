@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.citi.tts'
 version = '0.0.1-SNAPSHOT'
-description = 'taos-obd-mcp-server to expose obd data to LLM's via MCP Protocol'
+description = "taos-obd-mcp-server to expose obd data to LLM's via MCP Protocol"
 
 java {
 	toolchain {
