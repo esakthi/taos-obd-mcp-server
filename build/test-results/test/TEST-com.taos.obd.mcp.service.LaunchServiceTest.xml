@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.taos.obd.mcp.service.LaunchServiceTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-08-30T17:47:03.871Z" hostname="devbox" time="0.158">
+  <properties/>
+  <testcase name="getAllLaunches_shouldReturnLaunches()" classname="com.taos.obd.mcp.service.LaunchServiceTest" time="0.127"/>
+  <testcase name="getLaunchById_shouldReturnLaunch()" classname="com.taos.obd.mcp.service.LaunchServiceTest" time="0.009"/>
+  <testcase name="getPastLaunchesDetailed_shouldReturnLaunches()" classname="com.taos.obd.mcp.service.LaunchServiceTest" time="0.003"/>
+  <testcase name="getPastLaunches_shouldReturnLaunches()" classname="com.taos.obd.mcp.service.LaunchServiceTest" time="0.003"/>
+  <testcase name="getUpcomingLaunches_shouldReturnLaunches()" classname="com.taos.obd.mcp.service.LaunchServiceTest" time="0.003"/>
+  <testcase name="searchLaunchesByMission_shouldReturnLaunches()" classname="com.taos.obd.mcp.service.LaunchServiceTest" time="0.003"/>
+  <testcase name="getPastLaunches_whenToolThrowsException_shouldPropagateException()" classname="com.taos.obd.mcp.service.LaunchServiceTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

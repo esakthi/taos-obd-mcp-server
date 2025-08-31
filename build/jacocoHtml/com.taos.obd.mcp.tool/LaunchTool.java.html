@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LaunchTool.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">taos-obd-mcp-server</a> &gt; <a href="index.source.html" class="el_package">com.taos.obd.mcp.tool</a> &gt; <span class="el_source">LaunchTool.java</span></div><h1>LaunchTool.java</h1><pre class="source lang-java linenums">package com.taos.obd.mcp.tool;
+
+import com.taos.obd.mcp.dto.*;
+import org.springframework.graphql.client.GraphQlClient;
+import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+@Component
+public class LaunchTool {
+
+    private final GraphQlClient graphQlClient;
+
+<span class="fc" id="L17">    public LaunchTool(GraphQlClient graphQlClient) {</span>
+<span class="fc" id="L18">        this.graphQlClient = graphQlClient;</span>
+<span class="fc" id="L19">    }</span>
+
+    public List&lt;Launch&gt; getPastLaunches(Integer limit) {
+        // language=GraphQL
+<span class="fc" id="L23">        String query = &quot;&quot;&quot;</span>
+            query GetPastLaunches($limit: Int) {
+              launchesPast(limit: $limit) {
+                mission_name
+                launch_date_local
+                launch_site {
+                  site_name_long
+                }
+                links {
+                  article_link
+                  video_link
+                }
+                rocket {
+                  rocket_name
+                }
+              }
+            }
+        &quot;&quot;&quot;;
+
+<span class="fc" id="L42">        GetPastLaunchesQueryResponse response = graphQlClient.document(query)</span>
+<span class="fc" id="L43">                .variable(&quot;limit&quot;, limit)</span>
+<span class="fc" id="L44">                .execute()</span>
+<span class="fc" id="L45">                .map(r -&gt; r.toEntity(GetPastLaunchesQueryResponse.class))</span>
+<span class="fc" id="L46">                .block();</span>
+
+<span class="fc" id="L48">        return Objects.requireNonNull(response).launchesPast();</span>
+    }
+
+    public List&lt;Launch&gt; getPastLaunchesDetailed(Integer limit, Integer offset) {
+        // language=GraphQL
+<span class="fc" id="L53">        String query = &quot;&quot;&quot;</span>
+            query GetPastLaunchesDetailed($limit: Int, $offset: Int) {
+              launchesPast(limit: $limit, offset: $offset) {
+                id
+                mission_name
+                launch_date_local
+                launch_date_utc
+                launch_year
+                launch_success
+                details
+                launch_site {
+                  site_id
+                  site_name
+                  site_name_long
+                }
+                links {
+                  mission_patch
+                  mission_patch_small
+                  article_link
+                  video_link
+                  wikipedia
+                  youtube_id
+                  flickr_images
+                }
+                rocket {
+                  rocket_id
+                  rocket_name
+                  rocket_type
+                  first_stage {
+                    cores {
+                      core_serial
+                      flight
+                      reused
+                      land_success
+                      landing_type
+                    }
+                  }
+                  second_stage {
+                    payloads {
+                      payload_id
+                      customers
+                      nationality
+                      manufacturer
+                      payload_type
+                      payload_mass_kg
+                      orbit
+                    }
+                  }
+                }
+              }
+            }
+        &quot;&quot;&quot;;
+
+<span class="fc" id="L106">        GetPastLaunchesDetailedQueryResponse response = graphQlClient.document(query)</span>
+<span class="fc" id="L107">                .variables(Map.of(&quot;limit&quot;, limit, &quot;offset&quot;, offset))</span>
+<span class="fc" id="L108">                .execute()</span>
+<span class="fc" id="L109">                .map(r -&gt; r.toEntity(GetPastLaunchesDetailedQueryResponse.class))</span>
+<span class="fc" id="L110">                .block();</span>
+
+<span class="fc" id="L112">        return Objects.requireNonNull(response).launchesPast();</span>
+    }
+
+    public List&lt;Launch&gt; getUpcomingLaunches(Integer limit) {
+        // language=GraphQL
+<span class="fc" id="L117">        String query = &quot;&quot;&quot;</span>
+            query GetUpcomingLaunches($limit: Int) {
+              launchesUpcoming(limit: $limit) {
+                id
+                mission_name
+                launch_date_local
+                launch_date_utc
+                launch_site {
+                  site_name_long
+                }
+                rocket {
+                  rocket_name
+                }
+                details
+              }
+            }
+        &quot;&quot;&quot;;
+
+<span class="fc" id="L135">        GetUpcomingLaunchesQueryResponse response = graphQlClient.document(query)</span>
+<span class="fc" id="L136">                .variable(&quot;limit&quot;, limit)</span>
+<span class="fc" id="L137">                .execute()</span>
+<span class="fc" id="L138">                .map(r -&gt; r.toEntity(GetUpcomingLaunchesQueryResponse.class))</span>
+<span class="fc" id="L139">                .block();</span>
+
+<span class="fc" id="L141">        return Objects.requireNonNull(response).launchesUpcoming();</span>
+    }
+
+    public Launch getLaunchById(String id) {
+        // language=GraphQL
+<span class="fc" id="L146">        String query = &quot;&quot;&quot;</span>
+            query GetLaunchById($id: ID!) {
+              launch(id: $id) {
+                id
+                mission_name
+                launch_date_local
+                launch_date_utc
+                launch_year
+                launch_success
+                details
+                upcoming
+                launch_site {
+                  site_id
+                  site_name
+                  site_name_long
+                }
+                links {
+                  mission_patch
+                  article_link
+                  video_link
+                  wikipedia
+                  youtube_id
+                  flickr_images
+                }
+                rocket {
+                  rocket_id
+                  rocket_name
+                  rocket_type
+                  first_stage {
+                    cores {
+                      core_serial
+                      flight
+                      reused
+                      land_success
+                    }
+                  }
+                  second_stage {
+                    payloads {
+                      payload_id
+                      customers
+                      payload_type
+                      payload_mass_kg
+                      orbit
+                    }
+                  }
+                }
+              }
+            }
+        &quot;&quot;&quot;;
+
+<span class="fc" id="L196">        GetLaunchByIdQueryResponse response = graphQlClient.document(query)</span>
+<span class="fc" id="L197">                .variable(&quot;id&quot;, id)</span>
+<span class="fc" id="L198">                .execute()</span>
+<span class="fc" id="L199">                .map(r -&gt; r.toEntity(GetLaunchByIdQueryResponse.class))</span>
+<span class="fc" id="L200">                .block();</span>
+
+<span class="fc" id="L202">        return Objects.requireNonNull(response).launch();</span>
+    }
+
+    public List&lt;Launch&gt; searchLaunchesByMission(String missionName) {
+        // language=GraphQL
+<span class="fc" id="L207">        String query = &quot;&quot;&quot;</span>
+            query SearchLaunchesByMission($missionName: String!) {
+              launchesByMissionName(missionName: $missionName) {
+                id
+                mission_name
+                launch_date_local
+                launch_success
+                launch_site {
+                  site_name_long
+                }
+                rocket {
+                  rocket_name
+                }
+              }
+            }
+        &quot;&quot;&quot;;
+
+<span class="fc" id="L224">        SearchLaunchesByMissionQueryResponse response = graphQlClient.document(query)</span>
+<span class="fc" id="L225">                .variable(&quot;missionName&quot;, missionName)</span>
+<span class="fc" id="L226">                .execute()</span>
+<span class="fc" id="L227">                .map(r -&gt; r.toEntity(SearchLaunchesByMissionQueryResponse.class))</span>
+<span class="fc" id="L228">                .block();</span>
+
+<span class="fc" id="L230">        return Objects.requireNonNull(response).launchesByMissionName();</span>
+    }
+
+    public List&lt;Launch&gt; getAllLaunches(Integer limit, Integer offset, String sort, Order order) {
+        // language=GraphQL
+<span class="fc" id="L235">        String query = &quot;&quot;&quot;</span>
+            query GetAllLaunches($limit: Int, $offset: Int, $sort: String, $order: Order) {
+              launches(limit: $limit, offset: $offset, sort: $sort, order: $order) {
+                id
+                mission_name
+                launch_date_local
+                launch_success
+                upcoming
+                rocket {
+                  rocket_name
+                }
+              }
+            }
+        &quot;&quot;&quot;;
+
+<span class="fc" id="L250">        Map&lt;String, Object&gt; variables = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L251">        variables.put(&quot;limit&quot;, limit);</span>
+<span class="fc" id="L252">        variables.put(&quot;offset&quot;, offset);</span>
+<span class="fc" id="L253">        variables.put(&quot;sort&quot;, sort);</span>
+<span class="fc" id="L254">        variables.put(&quot;order&quot;, order);</span>
+
+<span class="fc" id="L256">        GetAllLaunchesQueryResponse response = graphQlClient.document(query)</span>
+<span class="fc" id="L257">                .variables(variables)</span>
+<span class="fc" id="L258">                .execute()</span>
+<span class="fc" id="L259">                .map(r -&gt; r.toEntity(GetAllLaunchesQueryResponse.class))</span>
+<span class="fc" id="L260">                .block();</span>
+
+<span class="fc" id="L262">        return Objects.requireNonNull(response).launches();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
