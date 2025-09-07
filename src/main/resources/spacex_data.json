@@ -1,0 +1,30 @@
+[
+  {
+    "mission_name": "Starlink 10-57",
+    "mission_date": "September 5, 2025",
+    "payload": "28 Starlink satellites",
+    "rocket": "Falcon 9 Block 5",
+    "booster": "B1069",
+    "launch_location": "Cape Canaveral Space Force Station, Florida",
+    "mission_outcome": "Successful",
+    "details": "This mission marked the 500th successful landing of a Falcon rocket booster. The Falcon 9 first stage landed on the drone ship 'Just Read the Instructions' in the Atlantic Ocean, highlighting SpaceX's focus on reusability.",
+    "milestones": [
+      "500th Falcon rocket landing",
+      "Continued deployment of the Starlink mega-constellation"
+    ]
+  },
+  {
+    "mission_name": "Starship Flight 10",
+    "mission_date": "Early September 2025",
+    "payload": "Test payload",
+    "rocket": "Starship",
+    "launch_location": "Starbase, Boca Chica, Texas",
+    "mission_outcome": "Successful (achieved mission objectives)",
+    "details": "Starship's tenth flight test wrapped up after a historic splashdown in the Indian Ocean. The test demonstrated critical capabilities but also highlighted areas for further development, including heat shield performance and precise orbital insertion.",
+    "milestones": [
+      "First successful Indian Ocean splashdown",
+      "Important data collected on heat shield integrity",
+      "Progress towards crewed lunar and Mars ambitions"
+    ]
+  }
+]

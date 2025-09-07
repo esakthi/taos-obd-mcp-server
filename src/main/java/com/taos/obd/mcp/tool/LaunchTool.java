@@ -18,6 +18,9 @@ public class LaunchTool {
         this.graphQlClient = graphQlClient;
     }
 
+    public record Request(Integer limit, Integer offset, String sort, Order order) {
+    }
+
     public List<Launch> getPastLaunches(Integer limit) {
         // language=GraphQL
         String query = """
