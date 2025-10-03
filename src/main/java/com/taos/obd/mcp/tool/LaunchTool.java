@@ -251,7 +251,9 @@ public class LaunchTool {
         variables.put("limit", limit);
         variables.put("offset", offset);
         variables.put("sort", sort);
-        variables.put("order", order);
+        if (order != null) {
+            variables.put("order", order.name());
+        }
 
         GetAllLaunchesQueryResponse response = graphQlClient.document(query)
                 .variables(variables)

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.taos.obd.mcp.controller.LaunchControllerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-08-30T17:47:01.045Z" hostname="devbox" time="0.612">
+<testsuite name="com.taos.obd.mcp.controller.LaunchControllerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-10-02T17:28:48.165Z" hostname="devbox" time="0.653">
   <properties/>
-  <testcase name="getPastLaunchesDetailed_shouldReturnDetailedLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.5"/>
+  <testcase name="getPastLaunchesDetailed_shouldReturnDetailedLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.537"/>
   <testcase name="searchLaunchesByMission_shouldReturnMatchingLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.011"/>
-  <testcase name="getLaunchById_whenServiceThrowsException_shouldReturnInternalServerError()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.031"/>
-  <testcase name="getLaunchById_shouldReturnLaunch()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.023"/>
-  <testcase name="getUpcomingLaunches_shouldReturnUpcomingLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.008"/>
-  <testcase name="getPastLaunches_shouldReturnLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.012"/>
-  <testcase name="getAllLaunches_shouldReturnAllLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.01"/>
-  <system-out><![CDATA[17:46:54.867 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.taos.obd.mcp.controller.LaunchControllerTest]: LaunchControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:46:55.177 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.taos.obd.mcp.TaosObdMcpServerApplication for test class com.taos.obd.mcp.controller.LaunchControllerTest
+  <testcase name="getLaunchById_whenServiceThrowsException_shouldReturnInternalServerError()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.03"/>
+  <testcase name="getLaunchById_shouldReturnLaunch()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.021"/>
+  <testcase name="getUpcomingLaunches_shouldReturnUpcomingLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.009"/>
+  <testcase name="getPastLaunches_shouldReturnLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.013"/>
+  <testcase name="getAllLaunches_shouldReturnAllLaunches()" classname="com.taos.obd.mcp.controller.LaunchControllerTest" time="0.011"/>
+  <system-out><![CDATA[17:28:42.904 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.taos.obd.mcp.controller.LaunchControllerTest]: LaunchControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:28:43.191 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.taos.obd.mcp.TaosObdMcpServerApplication for test class com.taos.obd.mcp.controller.LaunchControllerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -19,12 +19,12 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.4)
 
-2025-08-30T17:46:56.008Z  INFO 13094 --- [taos-obd-mcp-server] [    Test worker] c.t.o.m.controller.LaunchControllerTest  : Starting LaunchControllerTest using Java 17.0.16 with PID 13094 (started by jules in /app)
-2025-08-30T17:46:56.015Z  INFO 13094 --- [taos-obd-mcp-server] [    Test worker] c.t.o.m.controller.LaunchControllerTest  : No active profile set, falling back to 1 default profile: "default"
-2025-08-30T17:47:00.698Z  INFO 13094 --- [taos-obd-mcp-server] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-08-30T17:47:00.699Z  INFO 13094 --- [taos-obd-mcp-server] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-08-30T17:47:00.704Z  INFO 13094 --- [taos-obd-mcp-server] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
-2025-08-30T17:47:01.024Z  INFO 13094 --- [taos-obd-mcp-server] [    Test worker] c.t.o.m.controller.LaunchControllerTest  : Started LaunchControllerTest in 5.684 seconds (process running for 8.89)
+2025-10-02T17:28:43.961Z  INFO 6967 --- [taos-obd-mcp-server] [    Test worker] c.t.o.m.controller.LaunchControllerTest  : Starting LaunchControllerTest using Java 17.0.16 with PID 6967 (started by jules in /app)
+2025-10-02T17:28:43.965Z  INFO 6967 --- [taos-obd-mcp-server] [    Test worker] c.t.o.m.controller.LaunchControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2025-10-02T17:28:47.794Z  INFO 6967 --- [taos-obd-mcp-server] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-10-02T17:28:47.795Z  INFO 6967 --- [taos-obd-mcp-server] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-10-02T17:28:47.801Z  INFO 6967 --- [taos-obd-mcp-server] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-10-02T17:28:48.141Z  INFO 6967 --- [taos-obd-mcp-server] [    Test worker] c.t.o.m.controller.LaunchControllerTest  : Started LaunchControllerTest in 4.807 seconds (process running for 6.969)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
