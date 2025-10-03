@@ -251,15 +251,17 @@ public class LaunchTool {
 <span class="fc" id="L251">        variables.put(&quot;limit&quot;, limit);</span>
 <span class="fc" id="L252">        variables.put(&quot;offset&quot;, offset);</span>
 <span class="fc" id="L253">        variables.put(&quot;sort&quot;, sort);</span>
-<span class="fc" id="L254">        variables.put(&quot;order&quot;, order);</span>
+<span class="fc bfc" id="L254" title="All 2 branches covered.">        if (order != null) {</span>
+<span class="fc" id="L255">            variables.put(&quot;order&quot;, order.name());</span>
+        }
 
-<span class="fc" id="L256">        GetAllLaunchesQueryResponse response = graphQlClient.document(query)</span>
-<span class="fc" id="L257">                .variables(variables)</span>
-<span class="fc" id="L258">                .execute()</span>
-<span class="fc" id="L259">                .map(r -&gt; r.toEntity(GetAllLaunchesQueryResponse.class))</span>
-<span class="fc" id="L260">                .block();</span>
+<span class="fc" id="L258">        GetAllLaunchesQueryResponse response = graphQlClient.document(query)</span>
+<span class="fc" id="L259">                .variables(variables)</span>
+<span class="fc" id="L260">                .execute()</span>
+<span class="fc" id="L261">                .map(r -&gt; r.toEntity(GetAllLaunchesQueryResponse.class))</span>
+<span class="fc" id="L262">                .block();</span>
 
-<span class="fc" id="L262">        return Objects.requireNonNull(response).launches();</span>
+<span class="fc" id="L264">        return Objects.requireNonNull(response).launches();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

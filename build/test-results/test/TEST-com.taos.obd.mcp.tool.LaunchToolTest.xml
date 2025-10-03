@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.taos.obd.mcp.tool.LaunchToolTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-10-02T17:28:51.223Z" hostname="devbox" time="0.246">
+  <properties/>
+  <testcase name="getAllLaunches_withOrder_shouldPassCorrectOrderValue()" classname="com.taos.obd.mcp.tool.LaunchToolTest" time="0.24"/>
+  <testcase name="getAllLaunches_withNullOrder_shouldNotAddOrderToVariables()" classname="com.taos.obd.mcp.tool.LaunchToolTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
